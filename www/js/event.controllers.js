@@ -1,6 +1,6 @@
 'use strict'
 
-app.controller('EventsCtrl', function($scope, EventFactory, UserFactory, $state) {
+app.controller('EventsCtrl', function($scope, EventFactory, UserFactory, $state, $ionicPopup) {
 	EventFactory.getAll().then(function(events) {
 		$scope.loadedEvents = events;
 	}).then(function() {
@@ -38,7 +38,14 @@ app.controller('EventsCtrl', function($scope, EventFactory, UserFactory, $state)
 	})
 
 	$scope.addToWishList = function (username, event) {
-		UserFactory.addToWishList("test", event).then(function(res) {
+		console.log(event)
+		$ionicPopup.alert({
+			title: "Added to Wishlist",
+			template: "This event has been added to your wishlist!",
+			okText: "Let's browse some more!",
+			okType: "button-balanced"
+		})
+		UserFactory.addToWishList(username, event).then(function(res) {
 			console.log(res)
 		})
 	}

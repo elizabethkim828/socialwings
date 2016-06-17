@@ -1,8 +1,7 @@
 <ion-side-menus enable-menu-with-back-views="true">
   <ion-side-menu-content>
     <ion-nav-bar class="bar-positive">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
+      <ion-nav-back-button></ion-nav-back-button>
 
       <ion-nav-buttons side="right">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="right">
@@ -30,7 +29,10 @@
         <ion-item menu-close href="#/app/post">
           Post Events
         </ion-item>
-        <ion-item menu-close href="#/settings">
+        <ion-item menu-close href="#/app/wishlist">
+          My Wishlist
+        </ion-item>
+        <ion-item menu-close href="#/app/settings">
           Settings
         </ion-item>
         <ion-item menu-close ng-click="logout()">

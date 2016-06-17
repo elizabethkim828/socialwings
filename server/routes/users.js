@@ -26,13 +26,20 @@ router.post('/', function(req, res, next) {
 });
 
 router.post('/logout', function(req, res) {
-	console.log('in logout route')
-	req.session.user = null
+	req.session.destroy()
 })
 
 router.get('/loggedInUser', function(req, res) {
 	res.json(req.session.user);
 });
+
+router.get('/wishlist', function(req, res) {
+	User.findById(req.session.user.id).then(function(user) {
+		user.getEvents().then(function(events) {
+			res.json(events)
+		})
+	})
+})
 
 router.get('/:username', function(req, res) {
 	res.json(req.user);
@@ -58,8 +65,8 @@ router.post('/:username/wishlist', function(req, res) {
 		}
 	}).then(function(event) {
 		return event.addUsers([req.user])
-	}).then(function(res) {
-		res.json(res)
+	}).then(function(result) {
+		res.sendStatus(201)
 	})
 })
 

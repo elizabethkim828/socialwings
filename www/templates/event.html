@@ -4,6 +4,6 @@
     <img ng-src="{{ event.imageUrl || event.getDefaultImage }}">
     <h3>Description: {{event.description}}</h3>
     <h3>Date of Event: {{event.date | date}}</h3>
-    <h3>Max Guests: {{event.maxGuests}}</h3>
+    <h3>Max Guests: {{event.maxGuests || 'n/a' }}</h3>
   </ion-content>
 </ion-view>

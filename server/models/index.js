@@ -35,6 +35,13 @@ var User = db.define('user', {
 	        });
 	    },
 	},
+	instanceMethods: {
+		getWishlist: function() {
+			return Event.findAll({
+
+			})
+		}
+	}
 });
 
 var Event = db.define('event', {
@@ -95,7 +102,7 @@ var Event = db.define('event', {
 	},
 	instanceMethods: {
 		findSimilar: function() {
-			return Page.findAll({
+			return Event.findAll({
 				where: {
 					tags: {
 						$overlap: this.tags,
@@ -109,8 +116,9 @@ var Event = db.define('event', {
 	}
 });
 
-Event.belongsTo(User);
-Event.belongsToMany(User, { through: 'wishlist'})
+Event.belongsTo(User, { as: 'eventAuther'});
+Event.belongsToMany(User, { through: 'wishlistEvent'})
+User.belongsToMany(Event, { through: 'wishlistEvent'})
 
 module.exports = {
 	User: User,

@@ -15,9 +15,7 @@ app.use(bodyParser.json());
 
 app.use(morgan('dev')); // logging middleware
 
-app.use(session({
-  secret: 'keyboard cat'
-}))
+app.use(session({secret: 'keyboard cat'}))
 
 app.use(express.static(path.join(__dirname, '../','www/'))); // serves up static files from public folder
 

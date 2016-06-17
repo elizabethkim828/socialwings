@@ -36,10 +36,16 @@ app.factory('UserFactory', function($http) {
 		})	
 	}
 
+	obj.getWishlist = function() {
+		return $http.get('/app/users/wishlist').then(function(res) {
+			return res.data
+		})
+	}
+
 	obj.addToWishList = function(username, event) {
 		return $http.post('/app/users/'+username+'/wishlist', event).then(function(res) {
 			return res.data
-		})	
+		})
 	}
 
 	return obj

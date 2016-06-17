@@ -69,6 +69,21 @@ var app = angular.module('MyApp', ['ionic'])
     }
   })
 
+  .state('app.wishlist', {
+    url: '/wishlist',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/wishlist.html',
+        controller: 'WishlistCtrl'
+        // resolve: {
+        //   user: function(UserFactory) {
+        //     return UserFactory.getLoggedInUser()
+        //   }
+        // }
+      }
+    }
+  })
+
   .state('app.settings', {
     url: '/settings',
     views: {
