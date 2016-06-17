@@ -28,28 +28,28 @@ var seeddb = function () {
 
     var users = [
         {
-            name: 'test',
-            email: 'testing@fsa.com'
+            username: 'test',
+            email: 'testing@fsa.com',
+            password: 'aaa'
         },
         {
-            name: 'obama',
+            username: 'obama',
             email: 'obama@gmail.com',
+            password: 'aaa'
         }
     ];
 
     var creatingUsers = User.bulkCreate(users);
 
-    var events = [
-        {
-            title: 'First Event',
+    var events = [];
+    for (var i = 1; i < 51; i++) {
+        events.push({
+            title: 'Event ' + i,
+            urlTitle: ('Event ' + i).replace(/\s+/g, "_").replace(/\W/g, ""),
             description: 'description of event'
-        },
-        {
-            title: 'Second Event',
-            description: 'description of event'
-        },
-    ];
-
+        })    
+    }
+    
     var creatingEvents = Event.bulkCreate(events);
 
     return Promise.all([creatingUsers, creatingEvents])

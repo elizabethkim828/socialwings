@@ -2,10 +2,12 @@
 
 app.factory('EventFactory', function($http) {
 	var obj = {}
+	obj.cache = []
 	
 	obj.getAll = function() {
 		return $http.get('/app/events').then(function(res) {
-			return res.data
+			angular.copy(res.data, obj.cache)
+			return obj.cache;
 		})
 	}
 
@@ -17,6 +19,7 @@ app.factory('EventFactory', function($http) {
 
 	obj.postEvent = function(data) {
 		return $http.post('/app/events/', data).then(function(res) {
+			obj.cache.push(res.data)
 			return res.data
 		})	
 	}

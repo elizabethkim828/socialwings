@@ -1,28 +1,39 @@
 'use strict'
 
-app.controller('EventsCtrl', function($scope, EventFactory) {
+app.controller('EventsCtrl', function($scope, EventFactory, $state) {
 	EventFactory.getAll().then(function(events) {
-		$scope.events = events;
+		$scope.loadedEvents = events;
 	}).then(function() {
-		$scope.loadedEvents = []
 
-		for (var i = 0; i < $scope.events.length; i++) {
-			$scope.loadedEvents.push($scope.events[i])		
-		}
+		// //initial loading of events (only 10s)
+		// $scope.loadedEvents = []
+		// for (var i = 0; i < 10; i++) {
+		// 	$scope.loadedEvents.push($scope.events[i])
+		// }
 
-		$scope.loadMore = function() {
-		    var loadedEventsLength = $scope.loadedEvents.length;
-		    for (var i = loadedEventsLength; i < loadedEventsLength + 5; i++) {
-		    	if (loadedEventsLength < $scope.events.length) {
-			    	$scope.loadedEvents.push($scope.events[$scope.loadedEvents.length]);
-			    }	
-		    }
+		// $scope.loadMore = function() {
+		//     var loadedEventsLength = $scope.loadedEvents.length;
+		//     for (var i = loadedEventsLength; i < loadedEventsLength + 10; i++) {
+		//     	if ($scope.events[i]) $scope.loadedEvents.push($scope.events[i]);
+		//     }
 		    
-		    $scope.$broadcast("scroll.infiniteScrollComplete");
-		}
+		//     $scope.$broadcast("scroll.infiniteScrollComplete");
+		// }
 		  
-		$scope.moreDataCanBeLoaded = function() {
-			return $scope.loadedEvents.length !== $scope.events.length;
+		// $scope.moreDataCanBeLoaded = function() {
+		// 	return $scope.loadedEvents.length !== $scope.events.length;
+		// }
+
+		$scope.doRefresh = function() {
+			// if (EventFactory.cache.length > $scope.loadedEvents.length) {
+			// 	console.log('in if statement')
+			// 	var moreEvents = EventFactory.cache.slice($scope.loadedEvents.length)
+			// 	console.log(moreEvents)
+			// 	$scope.loadedEvents.concat(moreEvents);
+			// }
+			console.log(EventFactory.cache)
+			//$scope.loadedEvents.push({title: 'test', createdAt: Date.now()});
+		    $scope.$broadcast("scroll.refreshComplete");
 		}
 	})
 
