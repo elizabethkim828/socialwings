@@ -4,7 +4,7 @@ var db = new Sequelize('postgres://localhost:5432/socialwings', {
 });
 
 var User = db.define('user', {
-	name: {
+	username: {
 		type: Sequelize.STRING,
 		allowNull: false
 	},
@@ -12,13 +12,26 @@ var User = db.define('user', {
 		type: Sequelize.STRING,
 		isEmail: true,
 		allowNull: false
+	},
+	password: {
+		type: Sequelize.STRING,
+		allowNull: false
 	}
 }, {
     getterMethods: {
 		route: function () {
 			return '/users/' + this.dataValues.id;
 		}
-	}
+	},
+	classMethods: {
+		findByUsername: function(username) {
+			return this.findOne({
+				where: {
+	        		username: username
+	            }
+	        });
+	    },
+	},
 });
 
 var Event = db.define('event', {

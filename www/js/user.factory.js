@@ -10,9 +10,17 @@ app.factory('UserFactory', function($http) {
 		})
 	}
 
-	obj.getByUsername = function(username) {
-		return $http.get('/app/users/' + username).then(function(res) {
-			return res.data
+	obj.logIn = function(loginData) {
+		return $http.post('/app/users/login/' + loginData.username, loginData).then(function(res) {
+			if (res.data) return res.data;
+			else return false
+		})	
+	}
+
+	obj.getLoggedInUser = function(loginData) {
+		return $http.get('/app/users/loggedInUser').then(function(res) {
+			if (res.data) return res.data;
+			else return false
 		})	
 	}
 

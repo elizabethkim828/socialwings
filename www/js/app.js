@@ -60,6 +60,15 @@ var app = angular.module('MyApp', ['ionic'])
     }
   })
 
+  .state('app.profile', {
+    url: '/profile',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/profile.html'
+      }
+    }
+  })
+
   .state('app.settings', {
     url: '/settings',
     views: {

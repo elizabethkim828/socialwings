@@ -29,8 +29,9 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout, UserFactory) {
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function(loginData) {
-    UserFactory.getByUsername(loginData).then(function(user) {
-      console.log(user)
+    UserFactory.logIn(loginData).then(function(user) {
+      if (user) { console.log("logging in") }
+      else console.log('incorrect password')
     })
     //console.log('Doing login', $scope.loginData);
 

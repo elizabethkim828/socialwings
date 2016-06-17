@@ -28,12 +28,14 @@ var seeddb = function () {
 
     var users = [
         {
-            name: 'test',
-            email: 'testing@fsa.com'
+            username: 'test',
+            email: 'testing@fsa.com',
+            password: 'aaa'
         },
         {
-            name: 'obama',
+            username: 'obama',
             email: 'obama@gmail.com',
+            password: 'aaa'
         }
     ];
 
