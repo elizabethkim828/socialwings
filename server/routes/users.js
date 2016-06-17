@@ -2,6 +2,7 @@
 var router = require('express').Router();
 var models = require('../models')
 var User = models.User;
+var Event = models.Event;
 module.exports = router;
 
 router.param('username', function(req, res, next, username) {
@@ -24,11 +25,16 @@ router.post('/', function(req, res, next) {
 	}).catch(next)
 });
 
-router.get('/:username', function(req, res) {
-	res.json(req.user);
-});
+router.post('/logout', function(req, res) {
+	console.log('in logout route')
+	req.session.user = null
+})
 
 router.get('/loggedInUser', function(req, res) {
+	res.json(req.session.user);
+});
+
+router.get('/:username', function(req, res) {
 	res.json(req.user);
 });
 
@@ -37,12 +43,25 @@ router.post('/login/:username', function(req, res) {
 		if (req.user.password !== req.body.password) {
 			res.sendStatus(403)
 		} else {
+			req.session.user = req.user
 			res.json(req.user)
 		}
 	} else {
 		res.send('Username not found')
 	}
 });
+
+router.post('/:username/wishlist', function(req, res) {
+	Event.findOne({
+		where: {
+			id: req.body.id
+		}
+	}).then(function(event) {
+		return event.addUsers([req.user])
+	}).then(function(res) {
+		res.json(res)
+	})
+})
 
 router.put('/:userId', function(req, res, next) {
 	req.user.update(req.body).then(function(user){

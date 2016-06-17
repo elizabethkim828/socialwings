@@ -23,5 +23,7 @@ app.controller('PostCtrl', function($scope, $ionicModal, EventFactory, $state) {
     })
   }
 
+  $scope.categories = ['shopping', 'music', 'drinks', 'fitness', 'nature']
+
 });
 

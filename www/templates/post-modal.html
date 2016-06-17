@@ -13,10 +13,25 @@
 	    	</label>
 
 	    	<label class="item item-input">
-	    		<span class="input-label">Description</span>
-	    		<input type="text" name="description" ng-model="newEvent.description" required>
+	    		<span class="input-label">Date of Event</span>
+	    		<input type="date" name="date" ng-model="newEvent.date" required>
+	    	</label>
+
+	    	<label class="item item-input">
+	    		<span class="input-label">Category</span>
+	    		<select ng-model="newEvent.category" ng-options="c for c in categories"></select>
+	    	</label>
+
+	    	<label class="item item-input">
+	    		<span class="input-label">Max Guests</span>
+	    		<input type="number" name="maxGuests" ng-model="newEvent.maxGuests">
 	    	</label>
 	    	
+	    	<label class="item item-input">
+	    		<span class="input-label">Description</span>
+	    		<textarea type="text" name="description" ng-model="newEvent.description" required></textarea>
+	    	</label>
+
 	    	<button class="button button-block button-positive" type="submit">Submit</button>
 	    </form>
 	</ion-content>

@@ -1,5 +1,6 @@
 'use strict';
 var express = require('express');
+var session = require('express-session')
 var app = express();
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
@@ -13,6 +14,11 @@ app.use(bodyParser.urlencoded( { extended: true } ));
 app.use(bodyParser.json());
 
 app.use(morgan('dev')); // logging middleware
+
+app.use(session({
+  secret: 'keyboard cat'
+}))
+
 app.use(express.static(path.join(__dirname, '../','www/'))); // serves up static files from public folder
 
 app.use('/app', require('./routes'));

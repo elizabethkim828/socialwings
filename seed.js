@@ -30,23 +30,27 @@ var seeddb = function () {
         {
             username: 'test',
             email: 'testing@fsa.com',
-            password: 'aaa'
+            password: 'aaa',
+            about: 'I am super fun!'
         },
         {
             username: 'obama',
             email: 'obama@gmail.com',
-            password: 'aaa'
+            password: 'aaa',
+            about: 'I am so boring!'
         }
     ];
 
     var creatingUsers = User.bulkCreate(users);
 
     var events = [];
+    var categories = ['shopping', 'music', 'drinks', 'fitness', 'nature']
     for (var i = 1; i < 51; i++) {
         events.push({
             title: 'Event ' + i,
             urlTitle: ('Event ' + i).replace(/\s+/g, "_").replace(/\W/g, ""),
-            description: 'description of event'
+            description: 'description of event',
+            category: categories[Math.floor(Math.random()*categories.length)]
         })    
     }
     

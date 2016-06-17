@@ -1,6 +1,6 @@
 'use strict'
 
-app.controller('EventsCtrl', function($scope, EventFactory, $state) {
+app.controller('EventsCtrl', function($scope, EventFactory, UserFactory, $state) {
 	EventFactory.getAll().then(function(events) {
 		$scope.loadedEvents = events;
 	}).then(function() {
@@ -37,6 +37,11 @@ app.controller('EventsCtrl', function($scope, EventFactory, $state) {
 		}
 	})
 
+	$scope.addToWishList = function (username, event) {
+		UserFactory.addToWishList("test", event).then(function(res) {
+			console.log(res)
+		})
+	}
 	
 })
 
