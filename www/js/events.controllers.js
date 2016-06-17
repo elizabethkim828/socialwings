@@ -1,6 +1,6 @@
 'use strict'
 
-app.controller('SearchCtrl', function($scope) {
+app.controller('EventsCtrl', function($scope) {
 	$scope.events = []
 	for (var i = 1; i <= 50; i++) {
 		$scope.events.push({ name: "Event "+i });

@@ -32,12 +32,13 @@ var app = angular.module('MyApp', ['ionic'])
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.events', {
+    url: '/events',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
+        templateUrl: 'templates/events.html'
+      },
+      
     }
   })
 
@@ -71,5 +72,5 @@ var app = angular.module('MyApp', ['ionic'])
   })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/search');
+  $urlRouterProvider.otherwise('/app/events');
 });
