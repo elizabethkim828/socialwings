@@ -41,6 +41,15 @@ router.get('/wishlist', function(req, res) {
 	})
 })
 
+router.delete('/wishlist/:eventId', function(req, res) {
+	User.findById(req.session.user.id)
+	.then(function(user) {
+		return user.removeEvent(req.params.eventId)
+	}).then(function(events) {
+		res.sendStatus(204)
+	})
+})
+
 router.get('/:username', function(req, res) {
 	res.json(req.user);
 });

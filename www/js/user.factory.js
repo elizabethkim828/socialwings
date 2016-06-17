@@ -48,5 +48,11 @@ app.factory('UserFactory', function($http) {
 		})
 	}
 
+	obj.removeFromWishList = function(event) {
+		return $http.delete('/app/users/wishlist/'+event.id).then(function(res) {
+			return res.data
+		})
+	}
+
 	return obj
 })

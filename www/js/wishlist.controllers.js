@@ -5,7 +5,9 @@ app.controller('WishlistCtrl', function($scope, EventFactory, UserFactory) {
   })
   
   $scope.deleteItem = function(event) {
-    $scope.wishlist.splice($scope.wishlist.indexOf(event), 1)
+  	UserFactory.removeFromWishList(event).then(function() {
+  		$scope.wishlist.splice($scope.wishlist.indexOf(event), 1)
+  	})
   }
 
   $scope.showDelete = true

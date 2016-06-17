@@ -1,7 +1,6 @@
 <ion-view view-title="Your Wishlist">
   <ion-content ng-controller="WishlistCtrl">
     <ion-list show-delete="true">
-    	<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
 	    <ion-item collection-repeat="event in wishlist | orderBy: event.createdAt : true" href="#/app/events/{{event.id}}">
 	    	<ion-delete-button ng-click="deleteItem(event)" class="ion-minus-circled"></ion-delete-button>
 	    	<div>
@@ -9,6 +8,7 @@
 	    		<img ng-src="{{ event.imageUrl || event.getDefaultImage }}">
 	    	</div>
 	    </ion-item>
+	    <div ng-if='wishlist.length === 0'>Your wishlist is empty =[</div>
 	    <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>
   	</ion-list>
   </ion-content>
