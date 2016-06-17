@@ -1,10 +1,9 @@
 'use strict'
 
-app.controller('EventsCtrl', function($scope) {
-	$scope.events = []
-	for (var i = 1; i <= 50; i++) {
-		$scope.events.push({ name: "Event "+i });
-	}
+app.controller('EventsCtrl', function($scope, EventFactory) {
+	EventFactory.getAll().then(function(events) {
+		$scope.events = events;
+	});
 
 	$scope.loadedEvents = []
 	$scope.loadMore = function() {
@@ -18,4 +17,8 @@ app.controller('EventsCtrl', function($scope) {
 	$scope.moreDataCanBeLoaded = function() {
 		return $scope.loadedEvents.length !== $scope.events;
 	}
+})
+
+app.controller('EventCtrl', function($scope, EventFactory) {
+	
 })

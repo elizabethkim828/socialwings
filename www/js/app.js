@@ -37,8 +37,7 @@ var app = angular.module('MyApp', ['ionic'])
     views: {
       'menuContent': {
         templateUrl: 'templates/events.html'
-      },
-      
+      }
     }
   })
 
