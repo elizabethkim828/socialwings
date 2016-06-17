@@ -23,30 +23,24 @@ var User = db.define('user', {
 
 var Event = db.define('event', {
 	title: {
-		type: Sequelize.STRING,
-		allowNull: false
+		type: Sequelize.STRING
 	},
 	urlTitle: {
-		type: Sequelize.STRING,
-		allowNull: false
+		type: Sequelize.STRING
 	},
 	description: {
-		type: Sequelize.TEXT,
-		allowNull: false
+		type: Sequelize.TEXT
 	},
 	date: {
 		type: Sequelize.DATEONLY,
-		defaultValue: Sequelize.NOW,
-		allowNull: false
+		defaultValue: Sequelize.NOW
 	},
 	tags: {
-		type: Sequelize.ARRAY(Sequelize.STRING),
-		allowNull: true
+		type: Sequelize.ARRAY(Sequelize.STRING)
 	},
 	status: {
 		type: Sequelize.ENUM('open', 'closed'),
-		defaultValue: 'open',
-		allowNull: false
+		defaultValue: 'open'
 	}
 }, {
 	hooks: { // this auto updates urlTitle if the title changess

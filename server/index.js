@@ -21,7 +21,7 @@ app.use('/', function(req, res, next) {
 });
 
 // start the server
-models.db.sync({ force: true }) //{ force: true }
+models.db.sync() //{ force: true }
 .then(function() {
 	app.listen(3000, () => console.log('listening on port 3000...'));
 })
