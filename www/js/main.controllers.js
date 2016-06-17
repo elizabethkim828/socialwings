@@ -1,5 +1,6 @@
-app.controller('AppCtrl', function($scope, $ionicModal, $timeout, UserFactory, $state) {
-
+app.controller('AppCtrl', function($scope, $ionicModal, $timeout, UserFactory, $state, user) {
+  $scope.currUser = user
+  console.log(user)
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -25,13 +26,6 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout, UserFactory, $
   // Open the login modal
   $scope.login = function() {
     $scope.modal.show();
-  };
-
-  $scope.logout = function() {
-    UserFactory.logout().then(function() {
-      console.log('hello')
-      $state.go('app.events');
-    })
   };
 
   // Perform the login action when the user submits the login form

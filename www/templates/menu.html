@@ -17,26 +17,23 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close ng-click="login()">
+        <ion-item ng-if='!currUser' menu-close ng-click="login()">
           Login
-        </ion-item>
-        <ion-item menu-close href="#/app/profile">
-          My Profile
         </ion-item>
         <ion-item menu-close href="#/app/events">
           Search Events
         </ion-item>
-        <ion-item menu-close href="#/app/post">
+        <ion-item ng-if='currUser' menu-close href="#/app/post">
           Post Events
         </ion-item>
-        <ion-item menu-close href="#/app/wishlist">
+        <ion-item ng-if='currUser' menu-close href="#/app/wishlist">
           My Wishlist
         </ion-item>
-        <ion-item menu-close href="#/app/settings">
-          Settings
+        <ion-item ng-if='currUser' menu-close href="#/app/profile">
+          My Profile
         </ion-item>
-        <ion-item menu-close ng-click="logout()">
-          Logout
+        <ion-item ng-if='currUser' menu-close href="#/app/settings">
+          Settings
         </ion-item>
       </ion-list>
     </ion-content>

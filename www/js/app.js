@@ -29,7 +29,12 @@ var app = angular.module('MyApp', ['ionic'])
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+    controller: 'AppCtrl',
+    resolve: {
+      user: function(UserFactory) {
+        return UserFactory.getLoggedInUser()
+      }
+    }
   })
 
   .state('app.events', {
@@ -75,11 +80,6 @@ var app = angular.module('MyApp', ['ionic'])
       'menuContent': {
         templateUrl: 'templates/wishlist.html',
         controller: 'WishlistCtrl'
-        // resolve: {
-        //   user: function(UserFactory) {
-        //     return UserFactory.getLoggedInUser()
-        //   }
-        // }
       }
     }
   })

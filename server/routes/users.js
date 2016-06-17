@@ -25,6 +25,19 @@ router.post('/', function(req, res, next) {
 	}).catch(next)
 });
 
+router.post('/login/:username', function(req, res) {
+	if (req.user) {
+		if (req.user.password !== req.body.password) {
+			res.sendStatus(403)
+		} else {
+			req.session.user = req.user
+			res.json(req.user)
+		}
+	} else {
+		res.send('Username not found')
+	}
+});
+
 router.post('/logout', function(req, res) {
 	req.session.destroy()
 })
@@ -52,19 +65,6 @@ router.delete('/wishlist/:eventId', function(req, res) {
 
 router.get('/:username', function(req, res) {
 	res.json(req.user);
-});
-
-router.post('/login/:username', function(req, res) {
-	if (req.user) {
-		if (req.user.password !== req.body.password) {
-			res.sendStatus(403)
-		} else {
-			req.session.user = req.user
-			res.json(req.user)
-		}
-	} else {
-		res.send('Username not found')
-	}
 });
 
 router.post('/:username/wishlist', function(req, res) {
