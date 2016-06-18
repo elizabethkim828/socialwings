@@ -1,6 +1,5 @@
-app.controller('AppCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, UserFactory, $state, user, EventFactory) {
+app.controller('AppCtrl', function($scope, $ionicModal, $ionicActionSheet, $ionicPopup, $timeout, UserFactory, $state, user, EventFactory) {
   $scope.currUser = user
-  console.log(user)
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -29,14 +28,26 @@ app.controller('AppCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, U
   };
 
   $scope.logout = function() {
-    return UserFactory.logout()
-  };
+    $ionicActionSheet.show({
+      destructiveText: 'Yes, log me out',
+      cancelText: 'Cancel',
+      titleText: 'Are you sure you want to log out?',
+      destructiveButtonClicked: function() {
+        $state.go('app.events')
+        $scope.currUser = false
+        return UserFactory.logout()
+      }
+    })
+  }
+
+
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function(loginData) {
     UserFactory.logIn(loginData).then(function(user) {
       if (user) {
         $state.go('app.profile')
+        $scope.currUser = true
         $timeout(function() {
           $scope.closeLogin();
         }, 1000);
@@ -66,7 +77,7 @@ app.controller('AppCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, U
   });
 
   // Triggered in the login modal to close it
-  var closePostModal = function() {
+  $scope.closePostModal = function() {
     $scope.postModal.hide();
   };
 
@@ -79,7 +90,7 @@ app.controller('AppCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, U
 
   $scope.postEvent = function(newEvent) {
     EventFactory.postEvent(newEvent).then(function(event) {
-      closePostModal()
+      $scope.closePostModal()
       $state.go('app.singleEvent', {eventId: event.id})   
     })
   }
