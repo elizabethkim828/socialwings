@@ -1,4 +1,4 @@
-app.controller('AppCtrl', function($scope, $ionicModal, $ionicHistory, $ionicActionSheet, $ionicPopup, $timeout, UserFactory, $state, EventFactory) {
+app.controller('AppCtrl', function($scope, $ionicNavBarDelegate, $ionicModal, $ionicHistory, $ionicActionSheet, $ionicPopup, $timeout, UserFactory, $state, EventFactory) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -33,6 +33,9 @@ app.controller('AppCtrl', function($scope, $ionicModal, $ionicHistory, $ionicAct
       titleText: 'Are you sure you want to log out?',
       destructiveButtonClicked: function() {
         $ionicHistory.clearCache().then(function(){
+          $ionicHistory.nextViewOptions({
+            disableBack: true
+          });
           $state.go('app.events')
         })
         $scope.currUser = false
