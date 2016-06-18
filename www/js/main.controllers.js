@@ -1,4 +1,4 @@
-app.controller('AppCtrl', function($scope, $ionicModal, $timeout, UserFactory, $state, user) {
+app.controller('AppCtrl', function($scope, $ionicModal, $ionicPopup, $timeout, UserFactory, $state, user, EventFactory) {
   $scope.currUser = user
   console.log(user)
   // With the new view caching in Ionic, Controllers are only called
@@ -15,17 +15,17 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout, UserFactory, $
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
   }).then(function(modal) {
-    $scope.modal = modal;
+    $scope.loginModal = modal;
   });
 
   // Triggered in the login modal to close it
   $scope.closeLogin = function() {
-    $scope.modal.hide();
+    $scope.loginModal.hide();
   };
 
   // Open the login modal
   $scope.login = function() {
-    $scope.modal.show();
+    $scope.loginModal.show();
   };
 
   $scope.logout = function() {
@@ -35,15 +35,55 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout, UserFactory, $
   // Perform the login action when the user submits the login form
   $scope.doLogin = function(loginData) {
     UserFactory.logIn(loginData).then(function(user) {
-      if (user) { $state.go('app.profile') }
-      else console.log('incorrect password')
-    })
-    //console.log('Doing login', $scope.loginData);
+      if (user) {
+        $state.go('app.profile')
+        $timeout(function() {
+          $scope.closeLogin();
+        }, 1000);
+      }
+      else {
+        $scope.showAlert = function() {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Unauthorized',
+            template: 'Incorrect password!'
+          });
 
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
+          alertPopup.then(function(res) {
+            console.log('res')
+          })
+        }
+
+        $scope.showAlert()
+      }
+    })
   };
+
+  // post an event modal:
+  $ionicModal.fromTemplateUrl('templates/post-modal.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.postModal = modal;
+  });
+
+  // Triggered in the login modal to close it
+  var closePostModal = function() {
+    $scope.postModal.hide();
+  };
+
+  // Open the login modal
+  $scope.openPostModal = function() {
+    $scope.postModal.show();
+  };
+
+  $scope.newEvent = {}
+
+  $scope.postEvent = function(newEvent) {
+    EventFactory.postEvent(newEvent).then(function(event) {
+      closePostModal()
+      $state.go('app.singleEvent', {eventId: event.id})   
+    })
+  }
+
+  $scope.categories = ['shopping', 'music', 'drinks', 'fitness', 'nature']
+
 })

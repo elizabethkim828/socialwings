@@ -10,7 +10,5 @@ app.controller('WishlistCtrl', function($scope, EventFactory, UserFactory) {
   	})
   }
 
-  $scope.showDelete = true
-
 });
 

@@ -25,7 +25,7 @@ var app = angular.module('MyApp', ['ionic'])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('app', {
+  .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
@@ -41,7 +41,8 @@ var app = angular.module('MyApp', ['ionic'])
     url: '/events',
     views: {
       'menuContent': {
-        templateUrl: 'templates/events.html'
+        templateUrl: 'templates/events.html',
+        controller: 'EventsCtrl'
       }
     }
   })
@@ -52,15 +53,6 @@ var app = angular.module('MyApp', ['ionic'])
       'menuContent': {
         templateUrl: 'templates/event.html',
         controller: 'EventCtrl'
-      }
-    }
-  })
-
-  .state('app.post', {
-    url: '/post',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/post.html'
       }
     }
   })

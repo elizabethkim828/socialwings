@@ -1,13 +1,12 @@
 <ion-view view-title="Search Events In Your Area">
-  <ion-content>
-    <ion-list ng-controller="EventsCtrl">
+	<ion-content padding="true" class="has-header">
+	<ion-item class="item-divider">Swipe left to add to wishlist!</ion-item>	
+    <ion-list>
     	<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
 	    <ion-item collection-repeat="event in loadedEvents | orderBy: event.createdAt : true" href="#/app/events/{{event.id}}">
-	    	<div>
-	    		<div>{{ event.title }}</div>
-	    		<img ng-src="{{ event.imageUrl || event.getDefaultImage }}">
-	    		<ion-option-button ng-click="addToWishList('test', event)" class="button-assertive">Add To Wishlist</ion-option-button>
-	    	</div>
+	    	<ion-item class="item-divider">{{ event.title }}</ion-item>
+    		<img ng-src="{{ event.imageUrl || event.getDefaultImage }}">
+    		<ion-option-button ng-if='currUser' ng-click="addToWishList('test', event)" class="button-assertive">Add To Wishlist</ion-option-button>
 	    </ion-item>
 	    <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>
   	</ion-list>

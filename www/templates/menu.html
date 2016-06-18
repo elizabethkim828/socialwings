@@ -23,7 +23,7 @@
         <ion-item menu-close ui-sref='app.events'>
           Search Events
         </ion-item>
-        <ion-item ng-if='currUser' menu-close ui-sref='app.post'>
+        <ion-item ng-if='currUser' menu-close ng-click="openPostModal()">
           Post Events
         </ion-item>
         <ion-item ng-if='currUser' menu-close ui-sref='app.wishlist'>
