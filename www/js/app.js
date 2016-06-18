@@ -29,12 +29,7 @@ var app = angular.module('MyApp', ['ionic'])
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl',
-    resolve: {
-      user: function(UserFactory) {
-        return UserFactory.getLoggedInUser()
-      }
-    }
+    controller: 'AppCtrl'
   })
 
   .state('app.events', {
@@ -58,6 +53,7 @@ var app = angular.module('MyApp', ['ionic'])
   })
 
   .state('app.profile', {
+    cache: false,
     url: '/profile',
     views: {
       'menuContent': {
