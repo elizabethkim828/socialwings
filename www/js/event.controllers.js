@@ -38,7 +38,6 @@ app.controller('EventsCtrl', function($scope, EventFactory, UserFactory, $state,
 	})
 
 	$scope.addToWishList = function (username, event) {
-		console.log(event)
 		$ionicPopup.alert({
 			title: "Added to Wishlist",
 			template: "This event has been added to your wishlist!",

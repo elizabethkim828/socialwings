@@ -20,20 +20,23 @@
         <ion-item ng-if='!currUser' menu-close ng-click="login()">
           Login
         </ion-item>
-        <ion-item menu-close href="#/app/events">
+        <ion-item menu-close ui-sref='app.events'>
           Search Events
         </ion-item>
-        <ion-item ng-if='currUser' menu-close href="#/app/post">
+        <ion-item ng-if='currUser' menu-close ui-sref='app.post'>
           Post Events
         </ion-item>
-        <ion-item ng-if='currUser' menu-close href="#/app/wishlist">
+        <ion-item ng-if='currUser' menu-close ui-sref='app.wishlist'>
           My Wishlist
         </ion-item>
-        <ion-item ng-if='currUser' menu-close href="#/app/profile">
+        <ion-item ng-if='currUser' menu-close ui-sref='app.profile'>
           My Profile
         </ion-item>
-        <ion-item ng-if='currUser' menu-close href="#/app/settings">
+        <ion-item ng-if='currUser' menu-close ui-sref='app.settings'>
           Settings
+        </ion-item>
+        <ion-item ng-if='currUser' menu-close ng-click="logout()" ui-sref='app.events'>
+          Logout
         </ion-item>
       </ion-list>
     </ion-content>

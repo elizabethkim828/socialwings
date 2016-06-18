@@ -1,9 +1,12 @@
 <ion-view view-title="My Profile">
-  <ion-content>
-    <ion-list ng-controller="UserCtrl">
-    	<h1>Username:  {{ currUser.username }}</h1>
-    	<h3>Email: {{ currUser.email }}</h3>
-    	<h3>About Me: {{ currUser.about }}</h3>
-  	</ion-list>
+  <ion-content padding="true" class="has-header" ng-controller="UserCtrl">
+  	<ion-item class="item-divider">Profile Picture</ion-item>
+  	<ion-item><img width='100%' src='{{ currUser.profilePic }}'></ion-item>
+  	<ion-item class="item-divider">Username</ion-item>
+  	<ion-item>{{ currUser.username }}</ion-item>
+    <ion-item class="item-divider">Email</ion-item>
+  	<ion-item>{{ currUser.email }}</ion-item>
+  	<ion-item class="item-divider">About Me</ion-item>
+  	<ion-item>{{ currUser.about }}</ion-item>
   </ion-content>
 </ion-view>

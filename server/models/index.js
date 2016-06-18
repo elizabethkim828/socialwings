@@ -19,6 +19,10 @@ var User = db.define('user', {
 	},
 	about: {
 		type: Sequelize.TEXT
+	},
+	profilePic: {
+		type: Sequelize.STRING,
+		defaultValue: 'img/profile.jpg'
 	}
 }, {
     getterMethods: {
