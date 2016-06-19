@@ -2,11 +2,11 @@
 
 app.factory('UserFactory', function($http) {
 	var obj = {}
-	
+	obj.wishlistCache = []
+
 	obj.getAll = function() {
 		return $http.get('/app/users').then(function(res) {
-			angular.copy(res.data, obj.cache)
-			return obj.cache;
+			return res.data;
 		})
 	}
 
@@ -38,12 +38,14 @@ app.factory('UserFactory', function($http) {
 
 	obj.getWishlist = function() {
 		return $http.get('/app/users/wishlist').then(function(res) {
-			return res.data
+			angular.copy(res.data, obj.wishlistCache)
+			return obj.wishlistCache
 		})
 	}
 
 	obj.addToWishList = function(username, event) {
 		return $http.post('/app/users/'+username+'/wishlist', event).then(function(res) {
+			obj.wishlistCache.push(res.data)
 			return res.data
 		})
 	}

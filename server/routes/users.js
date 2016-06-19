@@ -68,14 +68,17 @@ router.get('/:username', function(req, res) {
 });
 
 router.post('/:username/wishlist', function(req, res) {
+	var addedEvent;
+
 	Event.findOne({
 		where: {
 			id: req.body.id
 		}
 	}).then(function(event) {
+		addedEvent = event
 		return event.addUsers([req.user])
-	}).then(function(result) {
-		res.sendStatus(201)
+	}).then(function() {
+		res.json(addedEvent)
 	})
 })
 
