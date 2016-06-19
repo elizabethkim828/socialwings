@@ -1,8 +1,8 @@
-app.controller('WishlistCtrl', function($scope, EventFactory, UserFactory) {
+app.controller('WishlistCtrl', function($scope, EventFactory, UserFactory, wishlist) {
 
-  UserFactory.getWishlist().then(function(events) {
-    $scope.wishlist = events;
-  })
+  //UserFactory.getWishlist().then(function(events) {
+    $scope.wishlist = wishlist;
+  //})
   
   $scope.deleteItem = function(event) {
   	UserFactory.removeFromWishList(event).then(function() {

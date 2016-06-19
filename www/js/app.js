@@ -67,7 +67,12 @@ var app = angular.module('MyApp', ['ionic'])
     views: {
       'menuContent': {
         templateUrl: 'templates/wishlist.html',
-        controller: 'WishlistCtrl'
+        controller: 'WishlistCtrl',
+        resolve: {
+          wishlist: function(UserFactory) {
+            return UserFactory.getWishlist()
+          }
+        }
       }
     }
   })
