@@ -3,7 +3,7 @@
     <ion-item class="item-divider">{{event.title}}</ion-item>
     <ion-item><img ng-src="{{ event.imageUrl || event.getDefaultImage }}"></ion-item>
     <ion-item class="item-divider">Description</ion-item>
-    <ion-item>{{event.description}}</ion-item>
+    <ion-item class="item item-text-wrap">{{event.description}}</ion-item>
     <ion-item class="item-divider">Date of Event</ion-item>
     <ion-item>{{event.date | date}}</ion-item>
     <ion-item class="item-divider">Max Guests</ion-item>

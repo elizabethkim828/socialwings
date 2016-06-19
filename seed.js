@@ -28,16 +28,18 @@ var seeddb = function () {
 
     var users = [
         {
-            username: 'test',
-            email: 'testing@fsa.com',
+            username: 'liz',
+            email: 'liz@liz.com',
             password: 'aaa',
-            about: 'I am super fun!'
+            about: 'I love to eat, dance, and work out!',
+            profilePic: 'img/profile.jpg'
         },
         {
             username: 'obama',
-            email: 'obama@gmail.com',
+            email: 'obama@obama.com',
             password: 'aaa',
-            about: 'I am so boring!'
+            about: 'I love to preside over the U.S. of A. FYI, I\'m the one on the left.',
+            profilePic: 'img/obama.jpg'
         }
     ];
 

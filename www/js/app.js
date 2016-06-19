@@ -37,7 +37,12 @@ var app = angular.module('MyApp', ['ionic'])
     views: {
       'menuContent': {
         templateUrl: 'templates/events.html',
-        controller: 'EventsCtrl'
+        controller: 'EventsCtrl',
+        resolve: {
+          events: function(EventFactory) {
+            return EventFactory.getAll()
+          }
+        }
       }
     }
   })
