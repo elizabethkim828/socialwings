@@ -19,6 +19,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
+	req.body.eventAutherId = req.session.user.id
 	Event.create(req.body).then(function(event){
 		res.status(201).json(event);
 	}).catch(next)
