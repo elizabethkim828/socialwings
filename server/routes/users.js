@@ -26,6 +26,16 @@ router.post('/', function(req, res, next) {
 	}).catch(next)
 });
 
+router.delete('/current', function(req, res) {
+	console.log('in router')
+	User.findById(req.session.user.id).then(function(user) {
+		return user.destroy()
+	}).then(function() {
+		req.session.destroy()
+		res.sendStatus(204)
+	})
+})
+
 router.post('/login/:username', function(req, res) {
 	if (req.user) {
 		if (req.user.password !== req.body.password) {

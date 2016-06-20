@@ -42,6 +42,12 @@ app.factory('UserFactory', function($http) {
 		})	
 	}
 
+	obj.deleteCurrUser = function(data) {
+		return $http.delete('/app/users/current').then(function(res) {
+			return true
+		})	
+	}
+
 	obj.getWishlist = function() {
 		return $http.get('/app/users/wishlist').then(function(res) {
 			angular.copy(res.data, obj.wishlistCache)
