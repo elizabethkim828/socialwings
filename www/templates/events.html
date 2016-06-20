@@ -1,8 +1,7 @@
 <ion-view view-title="Search Events In Your Area">
 	<ion-content padding="true" class="has-header">
-	<ion-item class="item-divider">Swipe left to add to wishlist!</ion-item>	
     <ion-list>
-    	<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
+    	<ion-refresher pulling-icon="ion-arrow-down-b assertive" spinner="lines" pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
 	    <ion-item collection-repeat="event in loadedEvents | orderBy: event.createdAt : true" href="#/app/events/{{event.id}}">
 	    	<ion-item class="item-divider">{{ event.title }}</ion-item>
     		<img ng-src="{{ event.imageUrl || event.getDefaultImage }}">

@@ -7,8 +7,11 @@
 		    	<ion-item class="item-divider">{{ event.title }}</ion-item>
 	    		<img ng-src="{{ event.imageUrl || event.getDefaultImage }}">
 		    </ion-item>
-		    <div ng-if='wishlist.length === 0'>Your wishlist is empty =[</div>
 		    <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>
   		</ion-list>
+  		<ion-item class="item item-text-wrap" ng-if='wishlist.length === 0'>
+	    	Your wishlist is empty! Let's browse events in your area and add some to your wishlist!
+	    	<button ui-sref='app.events' class="button button-block button-balanced">Show me events!</button>
+	    </ion-item>
   	</ion-content>
 </ion-view>

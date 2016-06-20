@@ -18,24 +18,35 @@
     <ion-content>
       <ion-list>
         <ion-item ng-if='!currUser' menu-close ng-click="login()">
+          <i class='ion-log-in'></i>
           Login
         </ion-item>
+        <ion-item ng-if='!currUser' menu-close ng-click="signup()">
+          <i class='ion-person-add'></i>
+          Signup
+        </ion-item>
         <ion-item menu-close ui-sref='app.events'>
+          <i class='ion-search'></i>
           Search Events
         </ion-item>
         <ion-item ng-if='currUser' menu-close ng-click="openPostModal()">
+          <i class='ion-ios-compose-outline'></i>
           Post Events
         </ion-item>
         <ion-item ng-if='currUser' menu-close ui-sref='app.wishlist'>
+          <i class='ion-heart'></i>
           My Wishlist
         </ion-item>
         <ion-item ng-if='currUser' menu-close ui-sref='app.profile'>
+          <i class='ion-person'></i>
           My Profile
         </ion-item>
         <ion-item ng-if='currUser' menu-close ui-sref='app.settings'>
+          <i class='ion-ios-gear'></i>
           Settings
         </ion-item>
         <ion-item ng-if='currUser' menu-close ng-click="logout()">
+          <i class='ion-log-out'></i>
           Logout
         </ion-item>
       </ion-list>

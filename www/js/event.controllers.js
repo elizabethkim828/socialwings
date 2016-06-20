@@ -2,24 +2,6 @@
 
 app.controller('EventsCtrl', function($scope, EventFactory, UserFactory, $state, $ionicPopup, events) {
 	$scope.loadedEvents = events;
-	// //initial loading of events (only 10s)
-	// $scope.loadedEvents = []
-	// for (var i = 0; i < 10; i++) {
-	// 	$scope.loadedEvents.push($scope.events[i])
-	// }
-
-	// $scope.loadMore = function() {
-	//     var loadedEventsLength = $scope.loadedEvents.length;
-	//     for (var i = loadedEventsLength; i < loadedEventsLength + 10; i++) {
-	//     	if ($scope.events[i]) $scope.loadedEvents.push($scope.events[i]);
-	//     }
-	    
-	//     $scope.$broadcast("scroll.infiniteScrollComplete");
-	// }
-	  
-	// $scope.moreDataCanBeLoaded = function() {
-	// 	return $scope.loadedEvents.length !== $scope.events.length;
-	// }
 
 	$scope.doRefresh = function() {
 		EventFactory.getAll().then(function(events) {

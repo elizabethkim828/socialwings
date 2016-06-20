@@ -1,32 +1,17 @@
 <ion-view title="Settings" id="page4" class=" ">
    <ion-content padding="true" class="has-header">
        <form id="settingsTabDefaultPage-form2" class="list ">
-           <ion-item class="item-divider " id="settingsTabDefaultPage-list-item-divider2">Discovery Settings</ion-item>
-           <ion-item id="settingsTabDefaultPage-list-item4" class="  ">Location</ion-item>
-           <label class="item item-input " id="settingsTabDefaultPage-input1">
-               <input type="number" placeholder="12345">
-           </label>
-           <ion-item id="settingsTabDefaultPage-list-item1" class="  ">Search Distance
-               <span class="item-note">50mi.</span>
+           <ion-item class="item-divider " id="settingsTabDefaultPage-list-item-divider2">Event Search Settings</ion-item>
+           <ion-toggle toggle-class="toggle-balanced" ng-checked="true">Exclude my events in search results</ion-toggle>
+           <ion-toggle toggle-class="toggle-balanced">Turn off location finder</ion-toggle>
+           <ion-item id="settingsTabDefaultPage-list-item1">Search Radius
+               <span class="item-note">5 miles</span>
            </ion-item>
-           <ion-item class="range range-positive " id="settingsTabDefaultPage-range1">
-               <input type="range" value="50" min="0" max="100" name="Search Distance">
+           <ion-item class="range range-positive">
+               <input type="range" value="20" min="0" max="100" ng-model='radius'>
            </ion-item>
-           <ion-item id="settingsTabDefaultPage-list-item2" class="  ">Select Weight
-               <span class="item-note">180lbs.</span>
-           </ion-item>
-           <ion-item class="range range-positive " id="settingsTabDefaultPage-range3">
-               <input type="range" value="180" min="80" max="300">
-           </ion-item>
-           <ion-item id="settingsTabDefaultPage-list-item3" class="  ">Show Ages
-               <span class="item-note">Make 2 way slider?</span>
-           </ion-item>
-           <ion-item class="range range-positive " id="settingsTabDefaultPage-range2">
-               <input type="range" value="25" min="18" max="55" name="Show Ages">
-           </ion-item>
-           <ion-toggle toggle-class="toggle-positive" ng-checked="true" id="settingsTabDefaultPage-toggle2" class=" ">Discovery</ion-toggle>
-           <ion-item class="item-divider " id="settingsTabDefaultPage-list-item-divider1">App Notifications</ion-item>
-           <ion-toggle toggle-class="toggle-positive" ng-checked="true" id="settingsTabDefaultPage-toggle3" class=" ">Toggle Notifications</ion-toggle>
+           <ion-item class="item-divider " id="settingsTabDefaultPage-list-item-divider1">Notifications</ion-item>
+           <ion-toggle toggle-class="toggle-balanced" ng-checked="true">Receive push notifications</ion-toggle>
            <button id="settingsTabDefaultPage-button2" class=" button button-assertive button-block">Delete Account</button>
        </form>
    </ion-content>

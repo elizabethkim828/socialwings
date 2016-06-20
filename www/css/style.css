@@ -1,3 +1,8 @@
 img {
 	width: 100%
 }
+
+.spinner svg {
+  stroke: #11c1f3;
+  fill: #11c1f3;
+}

@@ -17,6 +17,12 @@ app.factory('UserFactory', function($http) {
 		})	
 	}
 
+	obj.signup = function(signupData) {
+		return $http.post('/app/users', signupData).then(function(res) {
+			return res.data
+		})	
+	}
+
 	obj.logout = function() {
 		return $http.post('/app/users/logout').then(function(res) {
 			return true
