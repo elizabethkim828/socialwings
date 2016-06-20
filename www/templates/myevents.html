@@ -7,5 +7,9 @@
     		<ion-option-button ng-if='currUser' ng-click="delete(event)" class="button-assertive">Delete Event</ion-option-button>
 	    </ion-item>
   	</ion-list>
+  	<ion-item ng-controller='AppCtrl' class="item item-text-wrap" ng-if='loadedEvents.length === 0'>
+    	You have no posted events! Be a leader and post an event now!
+    	<button ng-click='openPostModal()' class="button button-block button-balanced">Post an Event</button>
+    </ion-item>
   </ion-content>
 </ion-view>
