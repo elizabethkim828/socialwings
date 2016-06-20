@@ -33,5 +33,9 @@ app.factory('EventFactory', function($http) {
 		})	
 	}
 
+	obj.deleteEvent = function(event) {
+		return $http.delete('/app/events/'+ event.id)
+	}
+
 	return obj
 })

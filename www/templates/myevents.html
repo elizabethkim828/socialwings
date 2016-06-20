@@ -4,9 +4,8 @@
 	    <ion-item collection-repeat="event in loadedEvents | orderBy: event.createdAt : true" href="#/app/events/{{event.id}}">
 	    	<ion-item class="item-divider">{{ event.title }}</ion-item>
     		<img ng-src="{{ event.imageUrl || event.getDefaultImage }}">
-    		<ion-option-button ng-if='currUser' ng-click="addToWishList(currUser.username, event)" class="button-assertive">Add To Wishlist</ion-option-button>
+    		<ion-option-button ng-if='currUser' ng-click="delete(event)" class="button-assertive">Delete Event</ion-option-button>
 	    </ion-item>
-	    <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>
   	</ion-list>
   </ion-content>
 </ion-view>

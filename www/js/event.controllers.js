@@ -24,6 +24,12 @@ app.controller('EventsCtrl', function($scope, EventFactory, UserFactory, $state,
 			console.log(res)
 		})
 	}
+
+	$scope.delete = function (event) {
+		EventFactory.deleteEvent(event).then(function() {
+			$scope.loadedEvents.splice($scope.loadedEvents.indexOf(event), 1)
+		})
+	}
 	
 })
 
