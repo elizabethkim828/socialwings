@@ -47,6 +47,21 @@ var app = angular.module('MyApp', ['ionic'])
     }
   })
 
+  .state('app.myEvents', {
+    url: '/myevents',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/myevents.html',
+        controller: 'EventsCtrl',
+        resolve: {
+          events: function(EventFactory) {
+            return EventFactory.getAllByCurrUser()
+          }
+        }
+      }
+    }
+  })
+
   .state('app.singleEvent', {
     url: '/events/:eventId',
     views: {

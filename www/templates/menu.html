@@ -29,6 +29,10 @@
           <i class='ion-search'></i>
           Search Events
         </ion-item>
+        <ion-item ng-if='currUser' menu-close ui-sref='app.myEvents'>
+          <i class='ion-search'></i>
+          My Events
+        </ion-item>
         <ion-item ng-if='currUser' menu-close ng-click="openPostModal()">
           <i class='ion-ios-compose-outline'></i>
           Post Events

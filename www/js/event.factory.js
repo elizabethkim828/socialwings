@@ -3,6 +3,7 @@
 app.factory('EventFactory', function($http) {
 	var obj = {}
 	obj.cache = []
+	obj.myEventsCache = []
 	
 	obj.getAll = function() {
 		return $http.get('/app/events').then(function(res) {
@@ -17,9 +18,17 @@ app.factory('EventFactory', function($http) {
 		})	
 	}
 
+	obj.getAllByCurrUser = function() {
+		return $http.get('/app/events/user').then(function(res) {
+			angular.copy(res.data, obj.myEventsCache)
+			return obj.myEventsCache
+		})	
+	}
+
 	obj.postEvent = function(data) {
 		return $http.post('/app/events/', data).then(function(res) {
 			obj.cache.push(res.data)
+			obj.myEventsCache.push(res.data)
 			return res.data
 		})	
 	}

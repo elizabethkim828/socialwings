@@ -18,6 +18,16 @@ router.get('/', function(req, res, next) {
 	}).catch(next)
 });
 
+router.get('/user', function(req, res, next) {
+	Event.findAll({
+		where: {
+			eventAutherId: req.session.user.id
+		}
+	}).then(function(events){
+		res.json(events);
+	}).catch(next)
+});
+
 router.post('/', function(req, res, next) {
 	req.body.eventAutherId = req.session.user.id
 	Event.create(req.body).then(function(event){
